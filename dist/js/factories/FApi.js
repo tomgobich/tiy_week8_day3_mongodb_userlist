@@ -43,6 +43,27 @@
 		};
 
 		// ------------------------------------------------------------
+		// Name: filterUsersByJSFan
+		// Abstract: Filters users dependent on jsFan status
+		// ------------------------------------------------------------
+		var filterUsersByJSFan = function filterUsersByJSFan(isJSFan) {
+			// Validate jsFan boolean
+			if (!isJSFan) {
+				isJSFan = false;
+			}
+
+			var promise = $http({
+				method: 'POST',
+				data: {
+					jsFanFilter: isJSFan
+				},
+				url: 'http://localhost:3000/api/users/filter'
+			});
+
+			return promise;
+		};
+
+		// ------------------------------------------------------------
 		// Name: deleteUser
 		// Abstract: Deletes a user
 		// ------------------------------------------------------------
@@ -58,6 +79,7 @@
 		return {
 			getAllUsers: getAllUsers,
 			addNewUser: addNewUser,
+			filterUsersByJSFan: filterUsersByJSFan,
 			deleteUser: deleteUser
 		};
 	});

@@ -52,6 +52,31 @@
 
 
 			// ------------------------------------------------------------
+			// Name: filterUsersByJSFan
+			// Abstract: Filters users dependent on jsFan status
+			// ------------------------------------------------------------
+			const filterUsersByJSFan = function(isJSFan)
+			{
+				// Validate jsFan boolean
+				if(!isJSFan)
+				{
+					isJSFan = false;
+				}
+
+				let promise = $http({
+					method: 'POST',
+					data: {
+						jsFanFilter: isJSFan
+					},
+					url: `http://localhost:3000/api/users/filter`,
+				})
+
+				return promise;
+			}
+
+
+
+			// ------------------------------------------------------------
 			// Name: deleteUser
 			// Abstract: Deletes a user
 			// ------------------------------------------------------------
@@ -71,6 +96,7 @@
 			return {
 				getAllUsers,
 				addNewUser,
+				filterUsersByJSFan,
 				deleteUser,
 			}
 		})

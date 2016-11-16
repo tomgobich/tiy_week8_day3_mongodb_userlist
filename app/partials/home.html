@@ -1,4 +1,13 @@
 <div class="col-xs-12 col-md-10 offset-md-1">
+
+	<p class="filter">
+		Filter By:
+		<select ng-options="item as item.name for item in controller.filterOptions track by item.id"
+				ng-change="controller.filterUsers(controller.filterSelection)"
+				ng-model="controller.filterSelection">
+		</select>
+	</p>
+
 	<h4 class="call-to-action-title" ui-sref="addUser" ng-hide="controller.userList.length > 0">Add a user to get going!</h4>
 	<div class="table-responsive" ng-show="controller.userList.length > 0">
 		<table class="table my-table">

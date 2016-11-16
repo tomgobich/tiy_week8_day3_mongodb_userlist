@@ -8,15 +8,45 @@
 
 			let vm = this;
 
-			// Get all users from API
-			let userListPromise = FApi.getAllUsers();
+			vm.filterOptions = [
+				{
+					id: 1,
+					name: 'All',
+					value: 'all',
+				},
+				{
+					id: 2,
+					name: 'JS Fan',
+					value: 'isJSFan',
+				},
+				{
+					id: 3,
+					name: 'Non JS Fan',
+					value: 'noJSFan',
+				}
+			];
 
-			// Once returned...
-			userListPromise.then(function(response)
+			// Set default selected filter
+			vm.filterSelection = vm.filterOptions[0];
+
+
+
+			// ------------------------------------------------------------
+			// Name: getAllUsers
+			// Abstract: Gets all users from database
+			// ------------------------------------------------------------
+			const getAllUsers = function()
 			{
-				// Target needed data
-				vm.userList = response.data;
-			});
+				// Get all users from API
+				let userListPromise = FApi.getAllUsers();
+
+				// Once returned...
+				userListPromise.then(function(response)
+				{
+					// Target needed data
+					vm.userList = response.data;
+				});
+			}
 
 
 			// ------------------------------------------------------------
@@ -59,6 +89,46 @@
 					}
 				})
 			}
+
+
+
+			// ------------------------------------------------------------
+			// Name: filterUsers
+			// Abstract: Filters user list by JavaScript fan status
+			// ------------------------------------------------------------
+			vm.filterUsers = function(selection)
+			{
+				switch(selection.value)
+				{
+					case 'isJSFan':
+						selection = true;
+						break;
+					case 'noJSFan':
+						selection = false;
+						break;
+					default:
+						getAllUsers();
+						selection = null;
+						break;
+				}
+
+				if(selection !== null)
+				{
+					// Get all users from API
+					let userListPromise = FApi.filterUsersByJSFan(selection);
+
+					// Once returned...
+					userListPromise.then(function(response)
+					{
+						// Target needed data
+						vm.userList = response.data;
+					});
+				}
+			}
+
+
+
+			getAllUsers();
 		})
 
 })();

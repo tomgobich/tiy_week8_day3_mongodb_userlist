@@ -46,6 +46,19 @@ exports.post = (function (req, res)
 
 
 
+exports.jsFanFilter = (function (req, res)
+{
+	let jsFanFilter = req.body.jsFanFilter;
+
+	let promise = User.find({ jsFan: jsFanFilter });
+	promise.then(function(response)
+	{
+		res.json(response);
+	})
+});
+
+
+
 exports.delete = (function(req,res)
 {
 	// Get the ID passed in

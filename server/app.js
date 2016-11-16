@@ -17,9 +17,9 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-mongoose.Promise = global.Promise;
 
-// connect to Mongo when the app initializes
+
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://tomgobich:C7Q5XxdbX9Z1c4eC@ds011024.mlab.com:11024/nodetastic-app');
 
 
@@ -28,6 +28,7 @@ const userApi = require('./controllers/user-api.js');
 
 app.get('/api/users', userApi.get);
 app.post('/api/users', userApi.post);
+app.post('/api/users/filter', userApi.jsFanFilter);
 app.delete('/api/users/:userID', userApi.delete);
 
 
