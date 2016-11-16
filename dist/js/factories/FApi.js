@@ -24,8 +24,6 @@
 		// Abstract: Adds a new user
 		// ------------------------------------------------------------
 		var addNewUser = function addNewUser(user) {
-			user.userID = Date.now() + Math.floor(Math.random() * (9999 - 1000) + 1000);
-
 			// Validate jsFan boolean
 			if (user.jsFan !== true) {
 				user.jsFan = false;

@@ -20,7 +20,9 @@ exports.post = (function (req, res)
 	let newUser = req.body.user;
 
 	User.create({
-		name: newUser.name,
+		first_name: newUser.first_name,
+		last_name: newUser.last_name,
+		email: newUser.email,
 		age: newUser.age,
 		jsFan: newUser.jsFan
 	},

@@ -167,7 +167,8 @@ main {
 // --------------------------------------------------
 // Home Styles
 // --------------------------------------------------
-$cellWidth: 33.334%;
+$columnCount: 5;
+$cellWidth: 100% / $columnCount;
 $cellPadding: 10px;
 $deleteWidth: 118px;
 
@@ -185,14 +186,13 @@ $deleteWidth: 118px;
 
 		.head,
 		.body {
-			width: $cellWidth;
 			text-align: center;
 			text-transform: capitalize;
 			padding: $cellPadding;
 			margin: 0;
-			float: left;
 
-			&.name {
+			&.name,
+			&.email {
 				text-align: left;
 			}
 
@@ -213,21 +213,21 @@ $deleteWidth: 118px;
 
 	.body-row {
 		color: rgba($color-text, 0.6);
-		border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.02);
 		overflow: hidden;
 		position: relative;
 
 		&:hover {
 			color: $color-text;
-			border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+			border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 
 			.body {
 				left: $deleteWidth;
-
-				&.delete-user {
-					left: 0;
-				}
 			}
+		}
+
+		td {
+			border: none;
 		}
 
 		.body {
@@ -239,9 +239,14 @@ $deleteWidth: 118px;
 				width: $deleteWidth;
 				color: $color-error;
 				position: absolute;
-				left: -33.334%;
-				transition: left .3s ease;
+				top: 0px;
+				left: -118px;
 				cursor: pointer;
+				float: left;
+			}
+
+			&.email {
+				text-transform: lowercase;
 			}
 		}
 	}

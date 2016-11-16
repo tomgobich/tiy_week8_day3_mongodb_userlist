@@ -2,13 +2,40 @@
 	<h3 class="page-title">Add New User</h3>
 	<form novalidate name="addUser" ng-submit="controller.addUser(addUser.$valid, addUser)">
 		<div class="row">
-			<div class="col-xs-12 col-md-8">
-				<label for="name" class="input-label">Name:</label>
+			<div class="col-xs-12 col-md-6">
+				<label for="name" class="input-label">First Name:</label>
 				<input 	type="text"
 						class="input-text"
-						name="name"
-						ng-model="controller.postData.name"
-						placeholder="Jon Doe"
+						name="first_name"
+						ng-model="controller.postData.first_name"
+						placeholder="Jon"
+						ng-minlength="2"
+						ng-maxlength="30"
+						ng-pattern="/^[a-z ,.'-]+$/i"
+						required>
+			</div>
+			<div class="col-xs-12 col-md-6">
+				<label for="name" class="input-label">Last Name:</label>
+				<input 	type="text"
+						class="input-text"
+						name="last_name"
+						ng-model="controller.postData.last_name"
+						placeholder="Doe"
+						ng-minlength="2"
+						ng-maxlength="30"
+						ng-pattern="/^[a-z ,.'-]+$/i"
+						required>
+			</div>
+			<div class="col-xs-12 col-md-8">
+				<label for="age" class="input-label">Email:</label>
+				<input 	type="email"
+						class="input-text"
+						name="email"
+						ng-model="controller.postData.email"
+						placeholder="jon.doe@gmail.com"
+						ng-minlength="5"
+						ng-maxlength="50"
+						ng-pattern="/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i"
 						required>
 			</div>
 			<div class="col-xs-12 col-md-4">
