@@ -1,0 +1,31 @@
+{
+	"parentTaskName": "bundle",
+	"concat": {
+		"active": true,
+		"config": {}
+	},
+	"uglify": {
+		"active": false,
+		"config": {}
+	},
+	"sourcemap": {
+		"active": true,
+		"config": {}
+	},
+	"destinationFolder": "dist",
+	"files": {
+		"js/main-bundle.js": [
+			"dist/js/main.js"
+		],
+		"js/controllers.js": [
+			"dist/js/controllers/CUsers.js",
+			"dist/js/controllers/CAddUser.js"
+		],
+		"js/factories.js": [
+			"dist/js/factories/FApi.js"
+		],
+		"css/main-bundle.css": [
+			"dist/css/main.css"
+		]
+	}
+}

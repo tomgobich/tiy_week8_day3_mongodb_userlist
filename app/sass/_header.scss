@@ -1,0 +1,50 @@
+header {
+	background-color: $color-alt-background;
+
+	nav {
+
+		ul {
+			text-align: center;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+
+			li {
+				color: $color-background;
+				display: inline-block;
+				padding: 3px 10px;
+				margin: 7px 5px;
+				border-radius: 6px;
+				cursor: pointer;
+				transition: background-color .3s ease;
+
+				&:hover,
+				&.active {
+					background-color: rgba(255,255,255, 0.2);
+				}
+			}
+		}
+	}
+
+}
+
+.logo-block {
+	padding: 30px 0 0;
+	text-align: center;
+	color: $color-alt-background;
+
+	.logo-content {
+		display: inline-block;
+		cursor: pointer;
+		transition: all .3s ease;
+
+		&:hover {
+			color: lighten($color-alt-background, 20);
+		}
+
+		.logo {
+			font-size: 2.8em;
+			margin: 0;
+		}
+	}
+}
